@@ -74,7 +74,7 @@ function App() {
         <div className="app-content">
           <header className="top-bar">
             <div className="brand-mark">
-              Chess <span>Portfolio</span>
+              samarthvratnam-<span>portfolio</span>
             </div>
 
             <div className="hero-block">

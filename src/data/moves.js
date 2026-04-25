@@ -19,58 +19,127 @@ export const portfolioProfile = {
   leetcode: "https://leetcode.com/u/samarthvratnam/",
 };
 
-const projectsRepositoryUrl = `${portfolioProfile.github}?tab=repositories`;
-
 export const projectShowcaseProjects = [
-  {
-    id: "modelcraft",
-    title: "ModelCraft",
-    summary: "A web app to train and test ML models on custom CSVs.",
-    description:
-      "An end-to-end ML workspace that lets users upload datasets, choose a task, train a model, and run quick predictions from the browser.",
-    tech: ["FastAPI", "Next.js", "Tailwind", "Python"],
-    githubUrl: projectsRepositoryUrl,
-    previewTheme: "modelcraft",
-  },
-  {
-    id: "maia",
-    title: "M.A.I.A",
-    summary: "A web-based AI assistant built around useful real-world workflows.",
-    description:
-      "M.A.I.A focuses on practical assistance, fast interaction loops, and a clean interface for getting meaningful work done with AI.",
-    tech: ["React", "Node.js", "OpenAI", "Postgres"],
-    githubUrl: projectsRepositoryUrl,
-    previewTheme: "maia",
-  },
   {
     id: "vinyltab",
     title: "VinylTab",
-    summary: "A music-focused productivity app designed around interaction and focus.",
+    host: "vinyl-tab.vercel.app",
+    summary:
+      "A music-driven productivity workspace with an immersive playback-first interface.",
     description:
-      "VinylTab blends playback, lightweight task flow, and a polished listening experience into a productivity space with personality.",
-    tech: ["React", "TypeScript", "Supabase", "Spotify API"],
-    githubUrl: projectsRepositoryUrl,
+      "A polished listening and focus experience built around playlists, a rich player surface, and an atmosphere-heavy UI.",
+    tech: ["React", "Music UI", "Productivity", "Vercel"],
+    githubUrl: "https://github.com/samarthratnam/VinylTab.git",
+    vercelUrl: "https://vinyl-tab.vercel.app/",
+    imageUrl: "/project-showcase/vinyltab.jpeg",
+    imageAlt: "VinylTab project screenshot",
     previewTheme: "vinyltab",
   },
   {
-    id: "chess-portfolio",
-    title: "Chess Portfolio",
-    summary: "An interactive portfolio told through an eight-move chess sequence.",
+    id: "rock-paper-scissors",
+    title: "Rock Paper Scissors",
+    host: "Vercel deployment",
+    summary:
+      "A browser-based Rock Paper Scissors game with score tracking and a clean versus layout.",
     description:
-      "A storytelling portfolio that turns navigation into a chess opening, pairing motion, section reveals, and a custom board UI.",
-    tech: ["React", "GSAP", "Chess.js", "Vite"],
-    githubUrl: projectsRepositoryUrl,
-    previewTheme: "chess",
+      "A quick-play game project focused on simple interactions, readable score states, and classic head-to-head flow against the CPU.",
+    tech: ["HTML", "CSS", "JavaScript", "Game"],
+    githubUrl:
+      "https://github.com/samarthratnam/Rock-Paper-Scissors-GAME.git",
+    vercelUrl:
+      "https://vercel.com/samarths-projects-8e1ed410/rock-paper-scissors-game/CXYzkVEVpm8NBdnn27fJztAxsL1j",
+    imageUrl: "/project-showcase/rock-paper-scissors.png",
+    imageAlt: "Rock Paper Scissors project screenshot",
+    previewTheme: "rps",
   },
   {
-    id: "gamelab",
-    title: "Game Lab",
-    summary: "A collection of game development experiments and interactive prototypes.",
+    id: "tic-tac-toe",
+    title: "Tic-Tac-Toe",
+    host: "tic-tac-toe-game-chi-lime.vercel.app",
+    summary: "A bright and playful Tic-Tac-Toe implementation with a bold game board UI.",
     description:
-      "A space for mechanics exploration, rapid prototyping, and interactive systems work shared across portfolio updates and socials.",
-    tech: ["Unity", "C#", "Game Design", "Prototyping"],
-    githubUrl: projectsRepositoryUrl,
-    previewTheme: "gamelab",
+      "A classic grid game presented with a simple, colorful layout that keeps the focus on fast interaction and replayability.",
+    tech: ["HTML", "CSS", "JavaScript", "Game"],
+    githubUrl: "https://github.com/samarthratnam/Tic-Tac-Toe-Game.git",
+    vercelUrl: "https://tic-tac-toe-game-chi-lime.vercel.app/",
+    imageUrl: "/project-showcase/tic-tac-toe.png",
+    imageAlt: "Tic-Tac-Toe project screenshot",
+    previewTheme: "tictactoe",
+  },
+  {
+    id: "smartcity",
+    title: "CityAccess",
+    host: "smartcity-psi.vercel.app",
+    summary:
+      "A city services access portal centered on login flow and structured citizen entry points.",
+    description:
+      "A smart-city themed web app built around portal access, clean form handling, and a straightforward public-service entry experience.",
+    tech: ["Portal UI", "Forms", "Authentication", "Vercel"],
+    githubUrl: "https://github.com/samarthratnam/SMARTCITY.git",
+    vercelUrl: "https://smartcity-psi.vercel.app/",
+    imageUrl: "/project-showcase/cityaccess.png",
+    imageAlt: "CityAccess project screenshot",
+    previewTheme: "smartcity",
+  },
+  {
+    id: "eduerp",
+    title: "EDUERP",
+    host: "eduerp-gamma.vercel.app",
+    summary:
+      "A role-based education ERP interface for students, teachers, admins, and administrators.",
+    description:
+      "An education portal experience organized around role selection and dashboard-style access for different institutional users.",
+    tech: ["ERP", "Role-Based UI", "Education", "Vercel"],
+    githubUrl: "https://github.com/samarthratnam/EDUERP.git",
+    vercelUrl: "https://eduerp-gamma.vercel.app/",
+    imageUrl: "/project-showcase/eduerp.png",
+    imageAlt: "EDUERP project screenshot",
+    previewTheme: "eduerp",
+  },
+  {
+    id: "nutritrack",
+    title: "NutriTrack",
+    host: "nutri-track-delta-henna.vercel.app",
+    summary:
+      "A nutrition-focused analyzer experience with recipe input, servings, and ingredient-based workflows.",
+    description:
+      "A food and recipe product experience with a guided ingredient form, nutrition analysis flow, and a warm product-style landing surface.",
+    tech: ["Nutrition UI", "Forms", "Product Design", "Vercel"],
+    githubUrl: "https://github.com/samarthratnam/NutriTrack.git",
+    vercelUrl: "https://nutri-track-delta-henna.vercel.app/",
+    imageUrl: "/project-showcase/nutritrack.png",
+    imageAlt: "NutriTrack project screenshot",
+    previewTheme: "nutritrack",
+  },
+  {
+    id: "animanga",
+    title: "Animanga",
+    host: "animanga-livid.vercel.app",
+    summary:
+      "An anime and manga streaming-style interface with a strong hero layout and browse navigation.",
+    description:
+      "An entertainment-focused UI built around large hero imagery, category navigation, and a cinematic first impression.",
+    tech: ["Streaming UI", "Search", "Browse", "Vercel"],
+    githubUrl:
+      "https://github.com/samarthratnam/AnimeStreamingWebsite.git",
+    vercelUrl: "https://animanga-livid.vercel.app/",
+    imageUrl: "/project-showcase/animanga.png",
+    imageAlt: "Animanga project screenshot",
+    previewTheme: "animanga",
+  },
+  {
+    id: "maia-v1",
+    title: "M.A.I.A V1",
+    host: "GitHub repository",
+    summary:
+      "An assistant project focused on practical workflows and conversational utility.",
+    description:
+      "The first version of M.A.I.A, centered on useful assistant interactions and a work-oriented AI product direction.",
+    tech: ["AI Assistant", "Workflow UI", "Prototype", "GitHub"],
+    githubUrl: "https://github.com/samarthratnam/M.A.I.A_V1.git",
+    imageUrl: "/project-showcase/maia-v1.png",
+    imageAlt: "M.A.I.A V1 project screenshot",
+    previewTheme: "maia",
   },
 ];
 
@@ -86,17 +155,17 @@ export const sectionMilestones = [
       "",
       "🚀 About Me",
       "",
-      "I'm Samarth — a developer passionate about building intelligent, real-world solutions across software engineering, AI, and cloud technologies.",
+      "I'm Samarth — a developer passionate about building real-world solutions across software engineering, AI, and cloud.",
       "",
-      "I enjoy solving complex problems and turning ideas into scalable applications, backed by a strong foundation in DSA and system design.",
+      "I enjoy solving complex problems and turning ideas into scalable applications, with a strong foundation in DSA and system design.",
       "",
-      "I actively refine my skills through competitive programming and hands-on projects, including a web-based AI assistant (M.A.I.A) and a music-focused productivity app, VinylTab.",
+      "Currently, I'm focused on building VinylTab — a music-driven productivity web app.",
       "",
-      "I'm also exploring game development, with projects I share on my portfolio and LinkedIn.",
+      "I'm also exploring game development, sharing projects on my portfolio and LinkedIn.",
       "",
-      "Beyond coding, I enjoy traveling and video editing, bringing creativity into both tech and storytelling.",
+      "Beyond coding, I enjoy traveling and video editing, blending creativity with tech.",
       "",
-      "I'm driven by curiosity and a constant urge to build meaningful, impactful experiences.",
+      "Driven by curiosity, I’m always building and improving.",
     ],
   },
   {
@@ -138,7 +207,9 @@ export const sectionMilestones = [
     title: "Projects",
     blurb:
       "I am currently building products that combine intelligence, usability, and strong engineering fundamentals.",
-    featuredProjects: projectShowcaseProjects.slice(0, 3),
+    featuredProjects: projectShowcaseProjects.filter((project) =>
+      ["vinyltab", "nutritrack", "eduerp"].includes(project.id),
+    ),
     ctaLabel: "View My Projects",
   },
   {

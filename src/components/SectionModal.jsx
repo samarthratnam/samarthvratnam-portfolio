@@ -1,16 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
-const EMPTY_TERMINAL_TEXT = [
-  "samarth@portfolio:~$ ./portfolio --help",
-  "welcome to my portfolio",
-  "Hi, I'm Samarth - I build things with code, break them, and rebuild them better.",
-  "",
-  "- scroll to move through the opening",
-  "- each move reveals a new section",
-  "- press restart to replay the sequence",
-].join("\n");
-
 function normalizeTerminalText(text) {
   return text.replaceAll("â€”", "-").replaceAll("ðŸš€", "\u{1F680}");
 }
@@ -84,18 +74,14 @@ function TerminalShell({
   );
 }
 
-function SectionModal({ section, currentPly, onOpenProjectsShowcase }) {
+function SectionModal({ section, currentPly, onOpenProjectsShowcase, onOpenSocialsShowcase, onOpenCertificatesShowcase, onOpenExperienceShowcase }) {
   const modalRef = useRef(null);
   const contentRef = useRef(null);
   const previousPlyRef = useRef(currentPly);
   const [typedTerminalText, setTypedTerminalText] = useState("");
-  const hasTerminalContent = !section || Boolean(section?.terminalLines?.length);
-  const terminalTitle = !section
-    ? "portfolio"
-    : (section.terminalTitle ?? "portfolio");
-  const terminalText = normalizeTerminalText(
-    !section ? EMPTY_TERMINAL_TEXT : (section.terminalLines?.join("\n") ?? ""),
-  );
+  const hasTerminalContent = Boolean(section?.terminalLines?.length);
+  const terminalTitle = section?.terminalTitle ?? "portfolio";
+  const terminalText = normalizeTerminalText(section?.terminalLines?.join("\n") ?? "");
 
   useEffect(() => {
     if (!hasTerminalContent) {
@@ -152,14 +138,26 @@ function SectionModal({ section, currentPly, onOpenProjectsShowcase }) {
 
   if (!section) {
     return (
-      <div className="section-modal section-modal--empty" ref={modalRef}>
+      <div className="section-modal section-modal--simple" ref={modalRef}>
         <div className="section-modal__content" ref={contentRef}>
-          <TerminalShell
-            title={terminalTitle}
-            text={typedTerminalText}
-            ariaLabel="Portfolio intro terminal"
-            resetKey="empty"
-          />
+          <p className="section-modal__eyebrow">Welcome</p>
+          <h2>♔ Welcome to My Board</h2>
+          <p className="section-modal__intro">
+            Hi, I'm Samarth V Ratnam.
+          </p>
+          <p className="section-modal__intro">
+            Computer Science Student • Full-Stack Developer • AI Enthusiast
+          </p>
+          <p className="section-modal__note">
+            Every project is a move.
+            <br />
+            Every challenge is a position.
+            <br />
+            Every solution is part of the game.
+          </p>
+          <p className="section-modal__note">
+            Scroll to begin the opening.
+          </p>
         </div>
       </div>
     );
@@ -207,21 +205,96 @@ function SectionModal({ section, currentPly, onOpenProjectsShowcase }) {
     );
   }
 
-  if (section.featuredProjects?.length) {
+  if (section.id === "about") {
+    return (
+      <div className="section-modal" ref={modalRef}>
+        <div className="section-modal__content" ref={contentRef}>
+          <h2>{section.title}</h2>
+          <p className="section-modal__label">About Me</p>
+          {section.body?.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (section.id === "certificates") {
     return (
       <div className="section-modal" ref={modalRef}>
         <div className="section-modal__content" ref={contentRef}>
           <h2>{section.title}</h2>
           <p>{section.blurb}</p>
 
-          <div className="section-modal__project-list">
-            {section.featuredProjects.map((project) => (
-              <div key={project.id} className="section-modal__project-item">
-                <h3>{project.title}</h3>
-                <p>{project.summary}</p>
-              </div>
-            ))}
+          <div className="section-modal__actions">
+            <button
+              className="section-modal__button"
+              type="button"
+              onClick={onOpenCertificatesShowcase}
+            >
+              View My Certificates
+            </button>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (section.id === "experience") {
+    return (
+      <div className="section-modal" ref={modalRef}>
+        <div className="section-modal__content" ref={contentRef}>
+          <h2>{section.title}</h2>
+          <p>{section.blurb}</p>
+
+          <div className="section-modal__actions">
+            <button
+              className="section-modal__button"
+              type="button"
+              onClick={() => onOpenExperienceShowcase("secl")}
+            >
+              Open Internship Experience
+            </button>
+            <button
+              className="section-modal__button"
+              type="button"
+              onClick={() => onOpenExperienceShowcase("hackathon")}
+            >
+              Open Other Experiences
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (section.socialLinks?.length) {
+    return (
+      <div className="section-modal" ref={modalRef}>
+        <div className="section-modal__content" ref={contentRef}>
+          <h2>{section.title}</h2>
+          <p>{section.blurb}</p>
+
+          <div className="section-modal__actions">
+            <button
+              className="section-modal__button"
+              type="button"
+              onClick={onOpenSocialsShowcase}
+            >
+              View socials
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (section.featuredProjects?.length) {
+    return (
+      <div className="section-modal" ref={modalRef}>
+        <div className="section-modal__content" ref={contentRef}>
+          <h2>{section.title}</h2>
+          <p>{section.blurb}</p>
 
           <div className="section-modal__actions">
             <button

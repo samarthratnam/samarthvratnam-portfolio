@@ -3,6 +3,9 @@ import ChessBoard from "./components/ChessBoard";
 import MoveController from "./components/MoveController";
 import Particles from "./components/Particles";
 import ProjectShowcasePanel from "./components/ProjectShowcasePanel";
+import SocialsShowcasePanel from "./components/SocialsShowcasePanel";
+import CertificatesShowcasePanel from "./components/CertificatesShowcasePanel";
+import ExperienceShowcasePanel from "./components/ExperienceShowcasePanel";
 import SectionModal from "./components/SectionModal";
 import {
   openingMoves,
@@ -24,6 +27,11 @@ function App() {
   const [currentPly, setCurrentPly] = useState(0);
   const [resetSignal, setResetSignal] = useState(0);
   const [isProjectsShowcaseOpen, setIsProjectsShowcaseOpen] = useState(false);
+  const [isSocialsShowcaseOpen, setIsSocialsShowcaseOpen] = useState(false);
+  const [isCertificatesShowcaseOpen, setIsCertificatesShowcaseOpen] = useState(false);
+  const [isExperienceShowcaseOpen, setIsExperienceShowcaseOpen] = useState(false);
+  const [experiencePanelMode, setExperiencePanelMode] = useState("secl");
+  const [isExperienceLocked, setIsExperienceLocked] = useState(false);
 
   const activeSectionIndex = getActiveSectionIndex(currentPly);
   const activeSection =
@@ -33,12 +41,26 @@ function App() {
     if (activeSection?.id !== "projects") {
       setIsProjectsShowcaseOpen(false);
     }
+
+    if (activeSection?.id !== "socials") {
+      setIsSocialsShowcaseOpen(false);
+    }
+    if (activeSection?.id !== "certificates") {
+      setIsCertificatesShowcaseOpen(false);
+    }
+    if (activeSection?.id !== "experience") {
+      setIsExperienceShowcaseOpen(false);
+    }
   }, [activeSection]);
 
   function handleRestart() {
     setCurrentPly(0);
     setResetSignal((count) => count + 1);
     setIsProjectsShowcaseOpen(false);
+    setIsSocialsShowcaseOpen(false);
+    setIsCertificatesShowcaseOpen(false);
+    setIsExperienceShowcaseOpen(false);
+    setExperiencePanelMode("secl");
   }
 
   return (
@@ -54,7 +76,7 @@ function App() {
       <div
         className={`app-shell ${
           isProjectsShowcaseOpen ? "app-shell--projects-open" : ""
-        }`}
+        } ${isSocialsShowcaseOpen ? "app-shell--projects-open" : ""}`}
       >
         <Particles
           className="app-particles"
@@ -108,6 +130,13 @@ function App() {
                 section={activeSection}
                 currentPly={currentPly}
                 onOpenProjectsShowcase={() => setIsProjectsShowcaseOpen(true)}
+                onOpenSocialsShowcase={() => setIsSocialsShowcaseOpen(true)}
+                onOpenCertificatesShowcase={() => setIsCertificatesShowcaseOpen(true)}
+                onOpenExperienceShowcase={(mode) => {
+                  setExperiencePanelMode(mode);
+                  setIsExperienceLocked(true);
+                  setIsExperienceShowcaseOpen(true);
+                }}
               />
             </aside>
           </div>
@@ -117,6 +146,43 @@ function App() {
           isOpen={isProjectsShowcaseOpen}
           onClose={() => setIsProjectsShowcaseOpen(false)}
           projects={projectShowcaseProjects}
+        />
+
+        <SocialsShowcasePanel
+          isOpen={isSocialsShowcaseOpen}
+          onClose={() => setIsSocialsShowcaseOpen(false)}
+          socialLinks={activeSection?.socialLinks ?? []}
+        />
+
+        <CertificatesShowcasePanel
+          isOpen={isCertificatesShowcaseOpen}
+          onClose={() => setIsCertificatesShowcaseOpen(false)}
+          certificates={
+            activeSection?.certificates ??
+            (activeSection?.body
+              ? activeSection.body.map((b, i) => ({
+                  id: `certificate-${i + 1}`,
+                  title: `Certificate ${i + 1}`,
+                  imageUrl: null,
+                  issuer: null,
+                  date: null,
+                  url: null,
+                  summary: b,
+                }))
+              : [])
+          }
+        />
+
+        <ExperienceShowcasePanel
+          isOpen={isExperienceShowcaseOpen}
+          onClose={() => {
+            setIsExperienceShowcaseOpen(false);
+            setIsExperienceLocked(false);
+            setExperiencePanelMode("secl");
+          }}
+          experience={activeSection}
+          initialActiveExperience={experiencePanelMode}
+          allowInternalToggle={!isExperienceLocked}
         />
       </div>
     </MoveController>

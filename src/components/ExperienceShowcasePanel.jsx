@@ -37,6 +37,24 @@ function ExperienceShowcasePanel({ isOpen, onClose, experience, initialActiveExp
         alt: "SECL recommendation letter",
       },
     },
+    other: {
+      header: "Other Experiences",
+      subtitle: "AI events and boot camps",
+      role: "Participant",
+      date: "2026",
+      summary: [
+        "Explore related experiences using the tabs below.",
+      ],
+      highlights: {
+        contributions: ["Use the tabs to switch between the boot camp and hackathon details."],
+        takeaways: ["This view groups related experiences in one place."],
+      },
+      certificateUrl: null,
+      certificateTitle: "",
+      repoUrl: null,
+      repoLabel: "",
+      secondaryCard: null,
+    },
     hackathon: {
       header: "HackWithAI 2026",
       subtitle: "KLH Bachupally Campus",
@@ -68,16 +86,45 @@ function ExperienceShowcasePanel({ isOpen, onClose, experience, initialActiveExp
       repoLabel: "View NutriTrack Project Repository",
       secondaryCard: null,
     },
+    agenticBootcamp: {
+      header: "Agentic AI Boot Camp",
+      subtitle: "KLGLUG (KL GNU/Linux Users Group)",
+      role: "Participant",
+      date: "24-hour boot camp",
+      summary: [
+        "Participated in a 24-hour Agentic AI Boot Camp hosted by KLGLUG at KL University.",
+        "Explored the fundamentals of agentic AI systems, modern AI workflows, prompt engineering, autonomous agents, and real-world AI applications through hands-on sessions and collaborative activities.",
+        "The boot camp strengthened my understanding of AI-driven software development and inspired me to further explore intelligent automation and agent-based systems.",
+      ],
+      highlights: {
+        contributions: [
+          "Engaged in hands-on agentic AI workshops and collaborative exercises.",
+          "Explored autonomous agent design and practical AI workflows.",
+          "Applied prompt engineering techniques to solve real-world problems.",
+        ],
+        takeaways: [
+          "Gained a deeper understanding of agentic AI systems and automation.",
+          "Learned how modern AI workflows support intelligent software development.",
+          "Strengthened my interest in building agent-based and autonomous systems.",
+        ],
+      },
+      certificateUrl: "/certificates/agenticaibootcamp.png",
+      certificateTitle: "Agentic AI Boot Camp Certificate",
+      repoUrl: null,
+      repoLabel: "",
+      secondaryCard: null,
+    },
   };
 
   const activeData = experienceMap[activeExperience] || experienceMap.secl;
 
   useEffect(() => {
-    // When the requested initial mode changes or panel opens, sync internal state
-    if (isOpen && initialActiveExperience && initialActiveExperience !== activeExperience) {
+    // When the requested initial mode changes or panel opens, sync internal state.
+    // Do not reset internal tab selection while the panel is already open.
+    if (isOpen && initialActiveExperience) {
       setActiveExperience(initialActiveExperience);
     }
-  }, [initialActiveExperience, isOpen, activeExperience]);
+  }, [initialActiveExperience, isOpen]);
 
   return (
     <div className={`experience-showcase ${isOpen ? "is-open" : ""}`}>
@@ -111,18 +158,18 @@ function ExperienceShowcasePanel({ isOpen, onClose, experience, initialActiveExp
         {allowInternalToggle ? (
           <div className="experience-showcase__switches">
             <button
-              className={`experience-showcase__switch ${activeExperience === "secl" ? "is-active" : ""}`}
-              type="button"
-              onClick={() => setActiveExperience("secl")}
-            >
-              SECL Internship
-            </button>
-            <button
               className={`experience-showcase__switch ${activeExperience === "hackathon" ? "is-active" : ""}`}
               type="button"
               onClick={() => setActiveExperience("hackathon")}
             >
               HackWithAI 2026
+            </button>
+            <button
+              className={`experience-showcase__switch ${activeExperience === "agenticBootcamp" ? "is-active" : ""}`}
+              type="button"
+              onClick={() => setActiveExperience("agenticBootcamp")}
+            >
+              Agentic AI Boot Camp
             </button>
           </div>
         ) : null}

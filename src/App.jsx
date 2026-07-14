@@ -7,6 +7,7 @@ import SocialsShowcasePanel from "./components/SocialsShowcasePanel";
 import CertificatesShowcasePanel from "./components/CertificatesShowcasePanel";
 import ExperienceShowcasePanel from "./components/ExperienceShowcasePanel";
 import SectionModal from "./components/SectionModal";
+import SkillsShowcasePanel from "./components/SkillsShowcasePanel";
 import {
   openingMoves,
   openingSequence,
@@ -30,8 +31,8 @@ function App() {
   const [isSocialsShowcaseOpen, setIsSocialsShowcaseOpen] = useState(false);
   const [isCertificatesShowcaseOpen, setIsCertificatesShowcaseOpen] = useState(false);
   const [isExperienceShowcaseOpen, setIsExperienceShowcaseOpen] = useState(false);
+  const [isSkillsShowcaseOpen, setIsSkillsShowcaseOpen] = useState(false);
   const [experiencePanelMode, setExperiencePanelMode] = useState("secl");
-  const [isExperienceLocked, setIsExperienceLocked] = useState(false);
 
   const activeSectionIndex = getActiveSectionIndex(currentPly);
   const activeSection =
@@ -50,6 +51,9 @@ function App() {
     }
     if (activeSection?.id !== "experience") {
       setIsExperienceShowcaseOpen(false);
+    }
+    if (activeSection?.id !== "skills") {
+      setIsSkillsShowcaseOpen(false);
     }
   }, [activeSection]);
 
@@ -133,10 +137,10 @@ function App() {
                 onOpenSocialsShowcase={() => setIsSocialsShowcaseOpen(true)}
                 onOpenCertificatesShowcase={() => setIsCertificatesShowcaseOpen(true)}
                 onOpenExperienceShowcase={(mode) => {
-                  setExperiencePanelMode(mode);
-                  setIsExperienceLocked(true);
+                  setExperiencePanelMode(mode === "other" ? "agenticBootcamp" : mode);
                   setIsExperienceShowcaseOpen(true);
                 }}
+                onOpenSkillsShowcase={() => setIsSkillsShowcaseOpen(true)}
               />
             </aside>
           </div>
@@ -177,12 +181,17 @@ function App() {
           isOpen={isExperienceShowcaseOpen}
           onClose={() => {
             setIsExperienceShowcaseOpen(false);
-            setIsExperienceLocked(false);
             setExperiencePanelMode("secl");
           }}
           experience={activeSection}
           initialActiveExperience={experiencePanelMode}
-          allowInternalToggle={!isExperienceLocked}
+          allowInternalToggle={experiencePanelMode !== "secl"}
+        />
+
+        <SkillsShowcasePanel
+          isOpen={isSkillsShowcaseOpen}
+          onClose={() => setIsSkillsShowcaseOpen(false)}
+          skillGroups={activeSection?.skillGroups ?? []}
         />
       </div>
     </MoveController>

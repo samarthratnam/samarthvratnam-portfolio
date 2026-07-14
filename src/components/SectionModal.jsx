@@ -74,11 +74,12 @@ function TerminalShell({
   );
 }
 
-function SectionModal({ section, currentPly, onOpenProjectsShowcase, onOpenSocialsShowcase, onOpenCertificatesShowcase, onOpenExperienceShowcase }) {
+function SectionModal({ section, currentPly, onOpenProjectsShowcase, onOpenSocialsShowcase, onOpenCertificatesShowcase, onOpenExperienceShowcase, onOpenSkillsShowcase }) {
   const modalRef = useRef(null);
   const contentRef = useRef(null);
   const previousPlyRef = useRef(currentPly);
   const [typedTerminalText, setTypedTerminalText] = useState("");
+  const [isSkillsPaneOpen, setIsSkillsPaneOpen] = useState(false);
   const hasTerminalContent = Boolean(section?.terminalLines?.length);
   const terminalTitle = section?.terminalTitle ?? "portfolio";
   const terminalText = normalizeTerminalText(section?.terminalLines?.join("\n") ?? "");
@@ -106,6 +107,12 @@ function SectionModal({ section, currentPly, onOpenProjectsShowcase, onOpenSocia
       window.clearInterval(intervalId);
     };
   }, [currentPly, hasTerminalContent, section, terminalText]);
+
+  useEffect(() => {
+    if (section?.id !== "skills") {
+      setIsSkillsPaneOpen(false);
+    }
+  }, [section]);
 
   useLayoutEffect(() => {
     if (!contentRef.current) {
@@ -184,21 +191,14 @@ function SectionModal({ section, currentPly, onOpenProjectsShowcase, onOpenSocia
       <div className="section-modal" ref={modalRef}>
         <div className="section-modal__content" ref={contentRef}>
           <h2>{section.title}</h2>
-          <p>{section.blurb}</p>
-
-          <div className="section-modal__skill-groups">
-            {section.skillGroups.map((group) => (
-              <section key={group.title} className="section-modal__skill-group">
-                <p className="section-modal__skill-label">{group.title}</p>
-                <div className="section-modal__skill-tags">
-                  {group.items.map((item) => (
-                    <span key={`${group.title}-${item}`} className="section-modal__skill-tag">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </section>
-            ))}
+          <div className="section-modal__actions">
+            <button
+              className="section-modal__button"
+              type="button"
+              onClick={onOpenSkillsShowcase}
+            >
+              View Skills
+            </button>
           </div>
         </div>
       </div>
@@ -258,7 +258,7 @@ function SectionModal({ section, currentPly, onOpenProjectsShowcase, onOpenSocia
             <button
               className="section-modal__button"
               type="button"
-              onClick={() => onOpenExperienceShowcase("hackathon")}
+              onClick={() => onOpenExperienceShowcase("agenticBootcamp")}
             >
               Open Other Experiences
             </button>

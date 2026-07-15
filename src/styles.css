@@ -3193,3 +3193,208 @@ body.checkmate-mode .section-modal p {
     justify-items: center;
   }
 }
+
+@media (max-width: 640px) {
+  html,
+  body,
+  #root {
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-y: auto;
+  }
+
+  .app-shell {
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding: 0.75rem;
+    overflow: visible;
+  }
+
+  .app-particles {
+    opacity: 0.34;
+  }
+
+  .app-content {
+    min-height: auto;
+    gap: 0.9rem;
+  }
+
+  .top-bar {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand action"
+      "title title";
+    gap: 0.55rem 0.75rem;
+    align-items: center;
+    text-align: left;
+  }
+
+  .brand-mark {
+    grid-area: brand;
+    justify-self: start;
+    max-width: 12rem;
+    padding-top: 0;
+    font-size: 0.84rem;
+    line-height: 1.2;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-block {
+    grid-area: title;
+    width: 100%;
+    text-align: left;
+  }
+
+  .hero-block h1 {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .top-actions {
+    grid-area: action;
+    width: auto;
+    justify-self: end;
+  }
+
+  .restart-button {
+    width: auto;
+    min-height: 2.4rem;
+    padding: 0.62rem 0.75rem;
+    letter-spacing: 0.12em;
+    font-size: 0.68rem;
+  }
+
+  .stage-layout {
+    width: 100%;
+    gap: 0.95rem;
+    align-items: stretch;
+  }
+
+  .board-stage {
+    justify-content: center;
+  }
+
+  .board-frame,
+  .board-grid {
+    width: min(100%, calc(100svw - 1.5rem));
+    max-width: 25rem;
+  }
+
+  .board-grid {
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+      0 18px 54px rgba(0, 0, 0, 0.54);
+  }
+
+  .board-square__file,
+  .board-square__rank {
+    font-size: 0.55rem;
+  }
+
+  .board-square-badge__chip {
+    width: 1.85rem;
+    height: 1.85rem;
+  }
+
+  .board-square-badge__icon {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+
+  .detail-rail {
+    width: 100%;
+  }
+
+  .section-modal {
+    width: 100%;
+    padding: 1rem;
+    max-height: none;
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(10, 10, 10, 0.94);
+  }
+
+  .section-modal h2 {
+    font-size: 1.65rem;
+    line-height: 1.08;
+  }
+
+  .section-modal p,
+  .section-modal__list {
+    font-size: 0.95rem;
+  }
+
+  .section-modal__actions {
+    gap: 0.55rem;
+  }
+
+  .section-modal__button,
+  .section-modal__link {
+    min-height: 2.75rem;
+    width: 100%;
+  }
+
+  .section-modal__resume-preview {
+    width: 100%;
+    max-height: 16rem;
+  }
+
+  .terminal-shell {
+    min-height: 12rem;
+  }
+
+  .terminal-shell__body {
+    max-height: 17rem;
+    font-size: 0.78rem;
+    line-height: 1.55;
+  }
+
+  .skills-showcase__panel,
+  .socials-showcase__panel,
+  .projects-showcase__panel,
+  .certificates-showcase__panel,
+  .experience-showcase__panel {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .skills-showcase__header,
+  .socials-showcase__header,
+  .projects-showcase__header,
+  .certificates-showcase__header,
+  .experience-showcase__header {
+    padding: 1rem 0.9rem 0.8rem;
+    align-items: center;
+  }
+
+  .skills-showcase__rail,
+  .socials-showcase__rail,
+  .projects-showcase__rail,
+  .certificates-showcase__rail,
+  .experience-showcase__rail {
+    padding: 0.85rem 0.85rem calc(2.5rem + env(safe-area-inset-bottom));
+  }
+
+  .skills-showcase__skill-item,
+  .section-modal__skill-tag {
+    font-size: 0.84rem;
+  }
+
+  .projects-showcase__header h2,
+  .certificates-showcase__header h2,
+  .experience-showcase__header h2 {
+    font-size: 1.55rem;
+  }
+
+  .project-card__preview {
+    height: 13rem;
+  }
+
+  .experience-showcase__switch {
+    flex: 1 1 100%;
+  }
+}

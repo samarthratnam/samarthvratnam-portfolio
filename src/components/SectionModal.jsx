@@ -310,6 +310,45 @@ function SectionModal({ section, currentPly, onOpenProjectsShowcase, onOpenSocia
     );
   }
 
+  if (section.resumeUrl) {
+    return (
+      <div className="section-modal" ref={modalRef}>
+        <div className="section-modal__content" ref={contentRef}>
+          <h2>{section.title}</h2>
+          <p>{section.blurb}</p>
+
+          <a
+            className="section-modal__resume-preview"
+            href={section.resumeUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="View resume"
+          >
+            <img src={section.resumeUrl} alt="Samarth V Ratnam resume preview" />
+          </a>
+
+          <div className="section-modal__actions">
+            <a
+              className="section-modal__link"
+              href={section.resumeUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View Resume
+            </a>
+            <a
+              className="section-modal__link section-modal__link--ghost"
+              href={section.resumeUrl}
+              download={section.resumeDownloadName ?? "resume.png"}
+            >
+              Download Resume
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="section-modal" ref={modalRef}>
       <div className="section-modal__content" ref={contentRef}>

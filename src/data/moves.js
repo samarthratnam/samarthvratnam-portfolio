@@ -351,6 +351,15 @@ export const sectionMilestones = [
   url: null,
 },
 {
+  id: "nptel-aiml",
+  title: "NPTEL AI & ML",
+  issuer: "NPTEL",
+  summary:
+    "Completed an NPTEL certification focused on artificial intelligence and machine learning fundamentals.",
+  imageUrl: "/certificates/NPTEL_aiml.jpeg",
+  url: null,
+},
+{
   id: "seclinternship",
   title: "SECL Internship",
   issuer: "South Eastern Coalfields Limited (SECL)",
@@ -394,9 +403,11 @@ export const sectionMilestones = [
     id: "resume",
     label: "Resume",
     title: "Resume",
-    blurb: "A quick link to my resume and career summary.",
+    blurb: "View or download my latest resume.",
+    resumeUrl: "/resume/resume1.png",
+    resumeDownloadName: "Samarth_V_Ratnam_Resume.png",
     body: [
-      "Upload your resume URL or PDF and I’ll make this the final download section.",
+      "A concise overview of my education, projects, technical skills, certifications, and experience.",
     ],
   },
 ];

@@ -86,6 +86,42 @@ function ExperienceShowcasePanel({ isOpen, onClose, experience, initialActiveExp
       repoLabel: "View NutriTrack Project Repository",
       secondaryCard: null,
     },
+    smartIndiaHackathon: {
+      header: "Smart India Hackathon 2025",
+      subtitle: "KL University",
+      role: "Internal Round Participant",
+      date: "2025",
+      summary: [
+        <>
+          Participated in the <strong>Internal Round of Smart India Hackathon (SIH) 2025</strong> at KL University, collaborating with a multidisciplinary team to design an innovative solution for a real-world problem. Contributed to brainstorming, requirement analysis, solution design, and rapid prototype development while working under time constraints. The experience strengthened my skills in teamwork, problem-solving, product thinking, and presenting technical ideas.
+        </>,
+      ],
+      highlights: {
+        contributions: [
+          "Collaborated with a multidisciplinary team on a real-world problem statement.",
+          "Contributed to brainstorming, requirement analysis, and solution design.",
+          "Supported rapid prototype development under time constraints.",
+          "Presented technical ideas and product direction clearly to the review panel.",
+        ],
+        takeaways: [
+          "Software Development",
+          "Problem Solving",
+          "Team Collaboration",
+          "Design Thinking",
+          "Innovation",
+          "Project Management",
+          "Rapid Prototyping",
+          "Presentation Skills",
+          "Critical Thinking",
+          "Agile Development",
+        ],
+      },
+      certificateUrl: "/certificates/smartindiahackathon2025.png",
+      certificateTitle: "Smart India Hackathon 2025 Certificate",
+      repoUrl: null,
+      repoLabel: "",
+      secondaryCard: null,
+    },
     agenticBootcamp: {
       header: "Agentic AI Boot Camp",
       subtitle: "KLGLUG (KL GNU/Linux Users Group)",
@@ -165,6 +201,13 @@ function ExperienceShowcasePanel({ isOpen, onClose, experience, initialActiveExp
               HackWithAI 2026
             </button>
             <button
+              className={`experience-showcase__switch ${activeExperience === "smartIndiaHackathon" ? "is-active" : ""}`}
+              type="button"
+              onClick={() => setActiveExperience("smartIndiaHackathon")}
+            >
+              SIH 2025
+            </button>
+            <button
               className={`experience-showcase__switch ${activeExperience === "agenticBootcamp" ? "is-active" : ""}`}
               type="button"
               onClick={() => setActiveExperience("agenticBootcamp")}
@@ -217,22 +260,24 @@ function ExperienceShowcasePanel({ isOpen, onClose, experience, initialActiveExp
                   alt={activeData.certificateTitle}
                 />
               </a>
-              <a
-                className="experience-showcase__repo-link"
-                href={activeData.repoUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <svg
-                  className="experience-showcase__repo-icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  focusable="false"
+              {activeData.repoUrl ? (
+                <a
+                  className="experience-showcase__repo-link"
+                  href={activeData.repoUrl}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  <path d="M12 0a12 12 0 00-3.79 23.41c.6.11.82-.26.82-.58v-2.05c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.78-1.35-1.78-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.79.42-1.32.76-1.62-2.66-.3-5.47-1.33-5.47-5.9 0-1.3.46-2.36 1.22-3.19-.12-.3-.53-1.52.12-3.17 0 0 .99-.32 3.24 1.22a11.3 11.3 0 012.95-.4c1 0 2.01.14 2.95.4 2.24-1.54 3.23-1.22 3.23-1.22.65 1.65.25 2.87.12 3.17.76.83 1.22 1.89 1.22 3.19 0 4.58-2.81 5.6-5.48 5.9.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0012 0z" />
-                </svg>
-                {activeData.repoLabel}
-              </a>
+                  <svg
+                    className="experience-showcase__repo-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M12 0a12 12 0 00-3.79 23.41c.6.11.82-.26.82-.58v-2.05c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.78-1.35-1.78-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.79.42-1.32.76-1.62-2.66-.3-5.47-1.33-5.47-5.9 0-1.3.46-2.36 1.22-3.19-.12-.3-.53-1.52.12-3.17 0 0 .99-.32 3.24 1.22a11.3 11.3 0 012.95-.4c1 0 2.01.14 2.95.4 2.24-1.54 3.23-1.22 3.23-1.22.65 1.65.25 2.87.12 3.17.76.83 1.22 1.89 1.22 3.19 0 4.58-2.81 5.6-5.48 5.9.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.82.58A12 12 0 0012 0z" />
+                  </svg>
+                  {activeData.repoLabel}
+                </a>
+              ) : null}
             </div>
 
             {activeData.secondaryCard ? (

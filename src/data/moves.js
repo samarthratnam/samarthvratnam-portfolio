@@ -342,6 +342,15 @@ export const sectionMilestones = [
   url: null,
 },
 {
+  id: "smartindiahackathon2025",
+  title: "Smart India Hackathon 2025",
+  issuer: "KL University",
+  summary:
+    "Participated in the Internal Round of Smart India Hackathon 2025 at KL University, collaborating with a multidisciplinary team to design an innovative solution for a real-world problem.",
+  imageUrl: "/certificates/smartindiahackathon2025.png",
+  url: null,
+},
+{
   id: "agenticaibootcamp",
   title: "Agentic AI Bootcamp",
   issuer: "Agentic AI",
